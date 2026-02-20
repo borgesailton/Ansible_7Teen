@@ -1,20 +1,29 @@
-- name: Deploy GameServer DDTank 
+---
+- name: Deploy GameServer DDTank
   hosts: localhost
   gather_facts: no
   tasks:
+    - name: Passo 0 - Preparar Container (Instalar Dependencias)
+      ansible.builtin.pip:
+        name: 
+          - proxmoxer
+          - requests
+        state: present
+        extra_args: --break-system-packages
+
     - name: Passo 1 - Clonar o Template (Criar a VM)
       community.general.proxmox_kvm:
         api_host: "{{ lookup('env', 'PROXMOX_HOST') }}"
         api_user: "{{ lookup('env', 'PROXMOX_USER') }}"
         api_token_id: "{{ lookup('env', 'PROXMOX_TOKEN_ID') }}"
         api_token_secret: "{{ lookup('env', 'PROXMOX_SECRET') }}"
-        node: "ns1021275"
-        clone: "vm-winddtbr36" # Ex: Template-WinServer-Final
-        name: "ddt36br01" # Nome da nova máquina
+        node: "pve" 
+        clone: "vm-winddtbr36" # Confirme se o nome está certo!
+        name: "GameServer-DDTank" 
         full: yes
-        storage: "local"
+        storage: "data" 
         state: present
-        validate_certs: no
+        validate_certs: no 
         timeout: 600
 
     - name: Passo 2 - Ligar a VM nova
@@ -24,6 +33,6 @@
         api_token_id: "{{ lookup('env', 'PROXMOX_TOKEN_ID') }}"
         api_token_secret: "{{ lookup('env', 'PROXMOX_SECRET') }}"
         node: "pve"
-        name: "ddt36br01" 
+        name: "GameServer-DDTank" 
         state: started
         validate_certs: no
