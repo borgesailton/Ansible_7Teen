@@ -13,12 +13,12 @@
 
     - name: Passo 1 - Clonar o Template (Criar a VM)
       community.general.proxmox_kvm:
-        api_host: "{{ lookup('env', 'PROXMOX_HOST') }}"
-        api_user: "{{ lookup('env', 'PROXMOX_USER') }}"
-        api_token_id: "{{ lookup('env', 'PROXMOX_TOKEN_ID') }}"
-        api_token_secret: "{{ lookup('env', 'PROXMOX_SECRET') }}"
+        api_host: "{{ PROXMOX_HOST }}"
+        api_user: "{{ PROXMOX_USER }}"
+        api_token_id: "{{ PROXMOX_TOKEN_ID }}"
+        api_token_secret: "{{ PROXMOX_SECRET }}"
         node: "pve" 
-        clone: "vm-winddtbr36" # Confirme se o nome está certo!
+        clone: "vm-winddtbr36" # Confirme o nome aqui
         name: "GameServer-DDTank" 
         full: yes
         storage: "data" 
@@ -28,10 +28,10 @@
 
     - name: Passo 2 - Ligar a VM nova
       community.general.proxmox_kvm:
-        api_host: "{{ lookup('env', 'PROXMOX_HOST') }}"
-        api_user: "{{ lookup('env', 'PROXMOX_USER') }}"
-        api_token_id: "{{ lookup('env', 'PROXMOX_TOKEN_ID') }}"
-        api_token_secret: "{{ lookup('env', 'PROXMOX_SECRET') }}"
+        api_host: "{{ PROXMOX_HOST }}"
+        api_user: "{{ PROXMOX_USER }}"
+        api_token_id: "{{ PROXMOX_TOKEN_ID }}"
+        api_token_secret: "{{ PROXMOX_SECRET }}"
         node: "pve"
         name: "GameServer-DDTank" 
         state: started
