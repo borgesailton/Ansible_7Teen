@@ -21,7 +21,7 @@
         clone: "vm-winddtbr36" # Confirme o nome aqui
         name: "GameServer-DDTank" 
         full: yes
-        storage: "data" 
+        storage: "local" 
         state: present
         validate_certs: no 
         timeout: 600
