@@ -17,7 +17,7 @@
         api_user: "{{ PROXMOX_USER }}"
         api_token_id: "{{ PROXMOX_TOKEN_ID }}"
         api_token_secret: "{{ PROXMOX_SECRET }}"
-        node: "pve" 
+        node: "ns1021275" 
         clone: "vm-winddtbr36" # Confirme o nome aqui
         name: "GameServer-DDTank" 
         full: yes
